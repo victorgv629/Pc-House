@@ -12,7 +12,7 @@
                 extend: {
                     colors: {
                         cream: '#f8fafc',
-                        pilgua: '#2563eb',
+                        pilgua: '#22c55e',
                     }
                 }
             }
@@ -31,45 +31,40 @@
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        .hide-scroll-bar::-webkit-scrollbar {
+            display: none;
         }
-        .animate-scroll {
-            animation: scroll 25s linear infinite;
-            display: flex;
-            width: max-content;
-        }
-        .animate-scroll:hover {
-            animation-play-state: paused;
+        .hide-scroll-bar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
 <body class="antialiased text-gray-700 dark:bg-gray-900 dark:text-gray-300 transition-colors duration-300" x-data="{ open: false, isModalOpen: false, modalImage: '', darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="$watch('darkMode', val => { localStorage.setItem('darkMode', val); val ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark') }); if(darkMode) document.documentElement.classList.add('dark')" @keydown.escape="isModalOpen = false">
 
-    <div class="w-full bg-cream dark:bg-gray-900 transition-colors duration-300">
+    <div class="w-full bg-gray-900 transition-colors duration-300 border-b border-gray-800">
         <div class="flex flex-col max-w-screen-xl px-8 mx-auto md:items-center md:justify-between md:flex-row">
             <div class="flex flex-row items-center justify-between py-6">
-                <div class="relative">
-                    <a href="#" class="text-2xl font-bold tracking-tight text-pilgua relative z-50 ml-6 block leading-none pt-1">PC HOUSE<span class="block text-base text-gray-500 dark:text-gray-400 mt-1 font-medium">Llay - Llay</span></a>
-                    <svg class="w-8 h-8 z-40 absolute -top-1 -left-2 text-pilgua" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
-                    </svg>
+                <div class="relative flex items-center">
+                    <a href="index.html" class="flex flex-col items-center group">
+                        <img src="img/pc_house_logo.png" alt="PC House Logo" class="w-48 md:w-64 h-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                        <span class="text-xs md:text-sm text-gray-300 font-bold tracking-[0.4em] uppercase -mt-2 md:-mt-4 opacity-90 group-hover:text-white transition-colors duration-300">LLAY <span class="text-pilgua mx-1">•</span> LLAY</span>
+                    </a>
                 </div>
-                <button class="rounded-lg md:hidden focus:outline-none" @click="open = !open">
+                <button class="rounded-lg md:hidden focus:outline-none text-white" @click="open = !open">
                     <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
                         <path x-show="!open" d="M3 5h14a1 1 0 110 2H3a1 1 0 110-2zm0 5h14a1 1 0 110 2H3a1 1 0 110-2zm0 5h14a1 1 0 110 2H3a1 1 0 110-2z"></path>
                     </svg>
                 </button>
             </div>
             <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
-                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 hover:text-pilgua dark:hover:text-pilgua dark:text-gray-300 transition-colors duration-300" href="#home">Inicio</a>
-                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 hover:text-pilgua dark:hover:text-pilgua dark:text-gray-300 transition-colors duration-300" href="#servicios">Servicios</a>
-                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 hover:text-pilgua dark:hover:text-pilgua dark:text-gray-300 transition-colors duration-300" href="accesorios.html">Accesorios</a>
-                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 hover:text-pilgua dark:hover:text-pilgua dark:text-gray-300 transition-colors duration-300" href="portafolio.html">Trabajos</a>
-                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 hover:text-pilgua dark:hover:text-pilgua dark:text-gray-300 transition-colors duration-300" href="#nosotros">Nosotros</a>
-                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 hover:text-pilgua dark:hover:text-pilgua dark:text-gray-300 transition-colors duration-300" href="#contacto">Contacto</a>
-                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 hover:text-pilgua dark:hover:text-pilgua dark:text-gray-300 transition-colors duration-300" href="#contacto">Ubicación</a>
+                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="#home">Inicio</a>
+                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="#servicios">Servicios</a>
+                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="accesorios.html">Accesorios</a>
+                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="portafolio.html">Trabajos</a>
+                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="#nosotros">Nosotros</a>
+                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="#contacto">Contacto</a>
+                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="#contacto">Ubicación</a>
                 <a class="px-10 py-3 mt-2 text-sm text-center bg-pilgua text-white rounded-full md:mt-8 md:ml-4 shadow-lg transition transform hover:scale-105" href="https://wa.me/56984770299" target="_blank">WhatsApp</a>
                 <button @click="darkMode = !darkMode" class="mt-2 md:mt-8 md:ml-4 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-300 focus:outline-none flex items-center justify-center">
                     <svg x-show="!darkMode" class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
@@ -115,55 +110,30 @@
             <h1 class="text-4xl font-bold text-gray-900 dark:text-white transition-colors duration-300">Nuevos <span class="text-pilgua">Accesorios</span></h1>
             <p class="text-gray-500 dark:text-gray-400 mt-3 text-lg">Conoce los productos destacados de nuestra tienda.</p>
         </div>
-        <div class="relative w-full overflow-hidden">
-            <div class="animate-scroll gap-6 px-4 py-4 items-center">
-                <!-- Original Items -->
-                <a href="accesorios.html" class="flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
+        <div class="relative w-full">
+            <div id="slider" class="flex overflow-x-auto gap-6 px-8 py-8 items-center snap-x snap-mandatory scroll-smooth hide-scroll-bar cursor-grab">
+                <!-- Items -->
+                <a href="accesorios.html" class="snap-center flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
                     <img src="img/adaptador_wifi.jpg" class="h-40 w-full object-contain mb-4 rounded-xl bg-white p-2">
                     <h3 class="font-bold text-gray-800 dark:text-white text-center text-lg">Adaptador Wi-Fi 6</h3>
                 </a>
-                <a href="accesorios.html" class="flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
+                <a href="accesorios.html" class="snap-center flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
                     <img src="img/hub_usb_c.jpg" class="h-40 w-full object-contain mb-4 rounded-xl bg-white p-2">
                     <h3 class="font-bold text-gray-800 dark:text-white text-center text-lg">Hub USB-C 7 en 1</h3>
                 </a>
-                <a href="accesorios.html" class="flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
+                <a href="accesorios.html" class="snap-center flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
                     <img src="img/mouse_inalambrico.jpg" class="h-40 w-full object-contain mb-4 rounded-xl bg-white p-2">
                     <h3 class="font-bold text-gray-800 dark:text-white text-center text-lg">Mouse Inalámbrico</h3>
                 </a>
-                <a href="accesorios.html" class="flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
+                <a href="accesorios.html" class="snap-center flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
                     <img src="img/case_disco_duro.jpg" class="h-40 w-full object-contain mb-4 rounded-xl bg-white p-2">
                     <h3 class="font-bold text-gray-800 dark:text-white text-center text-lg">Case Disco Duro</h3>
                 </a>
-                <a href="accesorios.html" class="flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
+                <a href="accesorios.html" class="snap-center flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
                     <img src="img/cable_sata_usb.jpg" class="h-40 w-full object-contain mb-4 rounded-xl bg-white p-2">
                     <h3 class="font-bold text-gray-800 dark:text-white text-center text-lg">Cable SATA a USB</h3>
                 </a>
-                <a href="accesorios.html" class="flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
-                    <img src="img/mcafee_antivirus.jpg" class="h-40 w-full object-contain mb-4 rounded-xl bg-white p-2">
-                    <h3 class="font-bold text-gray-800 dark:text-white text-center text-lg">Licencia McAfee</h3>
-                </a>
-                <!-- Duplicated Items para el Loop -->
-                <a href="accesorios.html" class="flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
-                    <img src="img/adaptador_wifi.jpg" class="h-40 w-full object-contain mb-4 rounded-xl bg-white p-2">
-                    <h3 class="font-bold text-gray-800 dark:text-white text-center text-lg">Adaptador Wi-Fi 6</h3>
-                </a>
-                <a href="accesorios.html" class="flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
-                    <img src="img/hub_usb_c.jpg" class="h-40 w-full object-contain mb-4 rounded-xl bg-white p-2">
-                    <h3 class="font-bold text-gray-800 dark:text-white text-center text-lg">Hub USB-C 7 en 1</h3>
-                </a>
-                <a href="accesorios.html" class="flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
-                    <img src="img/mouse_inalambrico.jpg" class="h-40 w-full object-contain mb-4 rounded-xl bg-white p-2">
-                    <h3 class="font-bold text-gray-800 dark:text-white text-center text-lg">Mouse Inalámbrico</h3>
-                </a>
-                <a href="accesorios.html" class="flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
-                    <img src="img/case_disco_duro.jpg" class="h-40 w-full object-contain mb-4 rounded-xl bg-white p-2">
-                    <h3 class="font-bold text-gray-800 dark:text-white text-center text-lg">Case Disco Duro</h3>
-                </a>
-                <a href="accesorios.html" class="flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
-                    <img src="img/cable_sata_usb.jpg" class="h-40 w-full object-contain mb-4 rounded-xl bg-white p-2">
-                    <h3 class="font-bold text-gray-800 dark:text-white text-center text-lg">Cable SATA a USB</h3>
-                </a>
-                <a href="accesorios.html" class="flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
+                <a href="accesorios.html" class="snap-center flex-shrink-0 w-64 bg-cream dark:bg-gray-800 rounded-3xl p-4 shadow-xl border-b-4 border-pilgua transform transition hover:-translate-y-2">
                     <img src="img/mcafee_antivirus.jpg" class="h-40 w-full object-contain mb-4 rounded-xl bg-white p-2">
                     <h3 class="font-bold text-gray-800 dark:text-white text-center text-lg">Licencia McAfee</h3>
                 </a>
@@ -215,10 +185,10 @@
 
     <footer id="contacto" class="py-16" style="background-color: #0f172a;">
         <div class="max-w-screen-xl mx-auto px-8 text-center">
-            <div class="mb-10">
-                <h1 class="font-bold text-3xl text-pilgua mb-1">PC HOUSE</h1>
-                <p class="text-xl text-gray-500 mb-2 font-medium">Llay - Llay</p>
-                <p class="text-gray-400">Servicio técnico confiable y garantizado.</p>
+            <div class="mb-10 flex flex-col items-center">
+                <img src="img/pc_house_logo.png" alt="PC House Logo" class="w-48 md:w-64 h-auto object-contain hover:scale-105 transition-transform duration-300">
+                <span class="text-xs md:text-sm text-gray-300 font-bold tracking-[0.4em] uppercase -mt-2 md:-mt-4 opacity-90 mb-6">LLAY <span class="text-pilgua mx-1">•</span> LLAY</span>
+                <p class="text-gray-400 text-lg">Servicio técnico confiable y garantizado.</p>
                 
                 <div class="mt-6 flex flex-col items-center justify-center space-y-2">
                     <p class="text-gray-300 text-lg">Dirección: <span class="text-white font-medium">Avenida José Manuel Balmaceda 246, local 1 Llay Llay V Región</span></p>
@@ -249,12 +219,19 @@
             <div class="flex justify-center space-x-8 mb-10 text-gray-300">
                 <a href="https://wa.me/56984770299" target="_blank" class="hover:text-pilgua transition">WhatsApp</a>
                 <a href="https://www.instagram.com/pc_house_llayllay" target="_blank" class="hover:text-pilgua transition">Instagram</a>
+                <a href="https://web.facebook.com/PC.HOUSE.LLAYLLAY/" target="_blank" class="hover:text-pilgua transition">Facebook</a>
                 <span class="text-gray-500">|</span>
                 <span class="text-gray-400">Instalación de Software y Accesorios</span>
             </div>
-            <p class="text-gray-500 text-sm border-t border-gray-800 pt-8">
-                &copy; 2026 PC HOUSE | Todos los derechos reservados
-            </p>
+            <div class="border-t border-gray-800 pt-8 flex flex-col items-center">
+                <p class="text-gray-500 text-sm mb-6">
+                    &copy; 2026 PC HOUSE | Todos los derechos reservados
+                </p>
+                <a href="#" class="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-gray-800 text-gray-300 hover:bg-pilgua hover:text-white transition-all duration-300 shadow-md group">
+                    <svg class="w-5 h-5 transform group-hover:-translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+                    <span class="font-medium tracking-wide">Volver al Inicio</span>
+                </a>
+            </div>
         </div>
     </footer>
 
@@ -269,6 +246,47 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
+
+        // Función para deslizar el carrusel con el ratón en PC (Drag to Scroll)
+        const slider = document.getElementById('slider');
+        if (slider) {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            slider.addEventListener('mousedown', (e) => {
+                isDown = true;
+                slider.classList.add('cursor-grabbing');
+                slider.classList.remove('cursor-grab');
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+            
+            slider.addEventListener('mouseleave', () => {
+                isDown = false;
+                slider.classList.remove('cursor-grabbing');
+                slider.classList.add('cursor-grab');
+            });
+            
+            slider.addEventListener('mouseup', () => {
+                isDown = false;
+                slider.classList.remove('cursor-grabbing');
+                slider.classList.add('cursor-grab');
+            });
+            
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2; // Velocidad de arrastre
+                slider.scrollLeft = scrollLeft - walk;
+            });
+
+            // Prevenir el comportamiento por defecto de arrastrar imágenes o enlaces
+            slider.querySelectorAll('a, img').forEach(el => {
+                el.addEventListener('dragstart', e => e.preventDefault());
+            });
+        }
     </script>
 </body>
 </html>
