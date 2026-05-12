@@ -27,7 +27,7 @@
         body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
     </style>
 </head>
-<body class="antialiased text-gray-700 dark:bg-gray-900 dark:text-gray-300 transition-colors duration-300" x-data="{ open: false, darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="$watch('darkMode', val => { localStorage.setItem('darkMode', val); val ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark') }); if(darkMode) document.documentElement.classList.add('dark')">
+<body class="antialiased text-gray-700 dark:bg-gray-900 dark:text-gray-300 transition-colors duration-300" x-data="{ open: false, isModalOpen: false, modalImage: '', darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="$watch('darkMode', val => { localStorage.setItem('darkMode', val); val ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark') }); if(darkMode) document.documentElement.classList.add('dark')" @keydown.escape="isModalOpen = false">
 
     <div class="w-full bg-cream dark:bg-gray-900 transition-colors duration-300 shadow-sm relative z-50">
         <div class="flex flex-col max-w-screen-xl px-8 mx-auto md:items-center md:justify-between md:flex-row">
@@ -68,29 +68,90 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-10">
-                <div data-aos="fade-up" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between">
-                    <div>
-                        <img src="img/teclado_mouse.png" class="w-full h-56 object-cover rounded-2xl mb-6 shadow-md" alt="Teclados y Ratones">
-                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Teclados y Ratones</h1>
-                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Equipos ergonómicos y mecánicos para mayor precisión y comodidad.</p>
+
+                
+                <div data-aos="fade-up" data-aos-delay="600" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between relative">
+                    <!-- Etiqueta de Precio -->
+                    <div class="absolute -top-4 -right-4 bg-pilgua text-white font-bold px-4 py-2 rounded-full shadow-lg z-10 border-4 border-white dark:border-gray-800 text-lg">
+                        $8.500
                     </div>
-                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesan%20los%20teclados%20y%20ratones" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
+                    <div>
+                        <img src="img/adaptador_wifi.jpg" class="w-full h-56 object-contain rounded-2xl mb-6 shadow-sm bg-white p-2 cursor-pointer hover:opacity-80 transition-opacity duration-300" alt="Adaptador Wi-Fi 6 AX300" @click="modalImage = 'img/adaptador_wifi.jpg'; isModalOpen = true">
+                        <p class="text-xs text-pilgua font-bold mb-1 uppercase tracking-wider">CÓDIGO: PCH-001</p>
+                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Adaptador Wi-Fi 6 AX300</h1>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Alta velocidad 286Mbps, MU-MIMO, Driver Free. Compatible con Windows 8/10/11.</p>
+                    </div>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Adaptador%20Wi-Fi%206%20por%20$8.500" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="200" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between">
-                    <div>
-                        <img src="img/auriculares_gaming.png" class="w-full h-56 object-cover rounded-2xl mb-6 shadow-md" alt="Auriculares y Audio">
-                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Auriculares y Audio</h1>
-                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Sonido envolvente de alta calidad para gaming, trabajo y reuniones.</p>
+                
+                <div data-aos="fade-up" data-aos-delay="800" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between relative">
+                    <!-- Etiqueta de Precio -->
+                    <div class="absolute -top-4 -right-4 bg-pilgua text-white font-bold px-4 py-2 rounded-full shadow-lg z-10 border-4 border-white dark:border-gray-800 text-lg">
+                        $12.990
                     </div>
-                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesan%20los%20auriculares" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
+                    <div>
+                        <img src="img/hub_usb_c.jpg" class="w-full h-56 object-contain rounded-2xl mb-6 shadow-sm bg-white p-2 cursor-pointer hover:opacity-80 transition-opacity duration-300" alt="Hub USB-C Multipuerto 7 en 1" @click="modalImage = 'img/hub_usb_c.jpg'; isModalOpen = true">
+                        <p class="text-xs text-pilgua font-bold mb-1 uppercase tracking-wider">CÓDIGO: PCH-002</p>
+                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Hub USB-C Multipuerto</h1>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Adaptador 7 en 1 con puertos USB 3.0, lector de tarjetas TF/SD, Audio 3.5mm y USB-C.</p>
+                    </div>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Hub%20USB-C%20por%20$12.990" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="400" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between">
-                    <div>
-                        <img src="img/almacenamiento_ssd.png" class="w-full h-56 object-cover rounded-2xl mb-6 shadow-md" alt="Almacenamiento y Cables">
-                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Almacenamiento y Cables</h1>
-                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Discos duros, SSDs, pendrives y cables de alta velocidad.</p>
+                
+                <div data-aos="fade-up" data-aos-delay="1000" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between relative">
+                    <!-- Etiqueta de Precio -->
+                    <div class="absolute -top-4 -right-4 bg-pilgua text-white font-bold px-4 py-2 rounded-full shadow-lg z-10 border-4 border-white dark:border-gray-800 text-lg">
+                        $9.990
                     </div>
-                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesan%20las%20opciones%20de%20almacenamiento" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
+                    <div>
+                        <img src="img/mouse_inalambrico.jpg" class="w-full h-56 object-contain rounded-2xl mb-6 shadow-sm bg-white p-2 cursor-pointer hover:opacity-80 transition-opacity duration-300" alt="Mouse Inalámbrico Recargable" @click="modalImage = 'img/mouse_inalambrico.jpg'; isModalOpen = true">
+                        <p class="text-xs text-pilgua font-bold mb-1 uppercase tracking-wider">CÓDIGO: PCH-003</p>
+                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Mouse Inalámbrico Dual</h1>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Mouse recargable silencioso. Doble conexión: Bluetooth y USB (2.4G). Compatible con múltiples dispositivos.</p>
+                    </div>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Mouse%20Inalámbrico%20por%20$9.990" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between relative">
+                    <!-- Etiqueta de Precio -->
+                    <div class="absolute -top-4 -right-4 bg-pilgua text-white font-bold px-4 py-2 rounded-full shadow-lg z-10 border-4 border-white dark:border-gray-800 text-lg">
+                        $9.990
+                    </div>
+                    <div>
+                        <img src="img/case_disco_duro.jpg" class="w-full h-56 object-contain rounded-2xl mb-6 shadow-sm bg-white p-2 cursor-pointer hover:opacity-80 transition-opacity duration-300" alt="Case Disco Duro Transparente" @click="modalImage = 'img/case_disco_duro.jpg'; isModalOpen = true">
+                        <p class="text-xs text-pilgua font-bold mb-1 uppercase tracking-wider">CÓDIGO: PCH-004</p>
+                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Case Disco Duro 2.5"</h1>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Carcasa transparente para disco duro o SSD de 2.5 pulgadas. Conexión rápida USB 3.0.</p>
+                    </div>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Case%20para%20Disco%20Duro%20por%20$9.990" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="400" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between relative">
+                    <!-- Etiqueta de Precio -->
+                    <div class="absolute -top-4 -right-4 bg-pilgua text-white font-bold px-4 py-2 rounded-full shadow-lg z-10 border-4 border-white dark:border-gray-800 text-lg">
+                        $6.990
+                    </div>
+                    <div>
+                        <img src="img/cable_sata_usb.jpg" class="w-full h-56 object-contain rounded-2xl mb-6 shadow-sm bg-white p-2 cursor-pointer hover:opacity-80 transition-opacity duration-300" alt="Cable Adaptador SATA a USB 3.0" @click="modalImage = 'img/cable_sata_usb.jpg'; isModalOpen = true">
+                        <p class="text-xs text-pilgua font-bold mb-1 uppercase tracking-wider">CÓDIGO: PCH-005</p>
+                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Cable Adaptador SATA a USB</h1>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Conecta discos duros o SSD de 2.5" fácilmente. Alta velocidad, luces LED y Plug & Play.</p>
+                    </div>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Cable%20SATA%20a%20USB%20por%20$6.990" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="600" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between relative">
+                    <!-- Etiqueta de Precio -->
+                    <div class="absolute -top-4 -right-4 bg-pilgua text-white font-bold px-4 py-2 rounded-full shadow-lg z-10 border-4 border-white dark:border-gray-800 text-lg">
+                        $12.990
+                    </div>
+                    <div>
+                        <img src="img/mcafee_antivirus.jpg" class="w-full h-56 object-contain rounded-2xl mb-6 shadow-sm bg-white p-2 cursor-pointer hover:opacity-80 transition-opacity duration-300" alt="McAfee Antivirus Plus" @click="modalImage = 'img/mcafee_antivirus.jpg'; isModalOpen = true">
+                        <p class="text-xs text-pilgua font-bold mb-1 uppercase tracking-wider">CÓDIGO: PCH-006</p>
+                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Licencia McAfee Antivirus</h1>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Suscripción por 1 año. Protección total para tu equipo contra virus y amenazas.</p>
+                    </div>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20la%20licencia%20de%20McAfee%20por%20$12.990" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
                 </div>
             </div>
         </div>
@@ -118,6 +179,14 @@
             </p>
         </div>
     </footer>
+
+    <!-- Modal para ampliar imágenes -->
+    <div x-show="isModalOpen" style="display: none;" class="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-80 p-4 transition-opacity duration-300" @click.away="isModalOpen = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+        <div class="relative max-w-5xl w-full flex justify-center items-center">
+            <button @click="isModalOpen = false" class="absolute -top-12 right-0 text-white hover:text-pilgua text-5xl font-bold focus:outline-none transition-colors">&times;</button>
+            <img :src="modalImage" class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl bg-white" @click.stop alt="Imagen ampliada">
+        </div>
+    </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
