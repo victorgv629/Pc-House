@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC HOUSE - Accesorios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#f8fafc',
+                        pilgua: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <style>
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="antialiased text-gray-700 dark:bg-gray-900 dark:text-gray-300 transition-colors duration-300" x-data="{ open: false, darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="$watch('darkMode', val => { localStorage.setItem('darkMode', val); val ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark') }); if(darkMode) document.documentElement.classList.add('dark')">
+
+    <div class="w-full bg-cream dark:bg-gray-900 transition-colors duration-300 shadow-sm relative z-50">
+        <div class="flex flex-col max-w-screen-xl px-8 mx-auto md:items-center md:justify-between md:flex-row">
+            <div class="flex flex-row items-center justify-between py-6">
+                <div class="relative">
+                    <a href="index.html" class="text-2xl font-bold tracking-tight text-pilgua relative z-50 ml-6 block leading-none pt-1">PC HOUSE<span class="block text-base text-gray-500 dark:text-gray-400 mt-1 font-medium">Llay - Llay</span></a>
+                    <svg class="w-8 h-8 z-40 absolute -top-1 -left-2 text-pilgua" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <button class="rounded-lg md:hidden focus:outline-none" @click="open = !open">
+                    <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                        <path x-show="!open" d="M3 5h14a1 1 0 110 2H3a1 1 0 110-2zm0 5h14a1 1 0 110 2H3a1 1 0 110-2zm0 5h14a1 1 0 110 2H3a1 1 0 110-2z"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
+                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 hover:text-pilgua dark:hover:text-pilgua dark:text-gray-300 transition-colors duration-300" href="index.html#home">Inicio</a>
+                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 hover:text-pilgua dark:hover:text-pilgua dark:text-gray-300 transition-colors duration-300" href="index.html#servicios">Servicios</a>
+                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-pilgua dark:text-pilgua font-bold transition-colors duration-300" href="#">Accesorios</a>
+                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 hover:text-pilgua dark:hover:text-pilgua dark:text-gray-300 transition-colors duration-300" href="portafolio.html">Trabajos</a>
+                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 hover:text-pilgua dark:hover:text-pilgua dark:text-gray-300 transition-colors duration-300" href="index.html#nosotros">Nosotros</a>
+                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 hover:text-pilgua dark:hover:text-pilgua dark:text-gray-300 transition-colors duration-300" href="#contacto">Contacto</a>
+                <a class="px-10 py-3 mt-2 text-sm text-center bg-pilgua text-white rounded-full md:mt-8 md:ml-4 shadow-lg transition transform hover:scale-105" href="https://wa.me/56984770299" target="_blank">WhatsApp</a>
+                <button @click="darkMode = !darkMode" class="mt-2 md:mt-8 md:ml-4 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-300 focus:outline-none flex items-center justify-center">
+                    <svg x-show="!darkMode" class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    <svg x-show="darkMode" class="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <div class="bg-cream dark:bg-gray-900 pt-16 min-h-screen">
+        <div id="accesorios" class="container px-8 mx-auto max-w-screen-xl pb-20 transition-colors duration-300">
+            <div data-aos="flip-up" class="max-w-xl mx-auto text-center mb-16">
+                <h1 class="font-bold text-4xl text-gray-900 dark:text-white my-3 transition-colors duration-300">Venta de <span class="text-pilgua">Accesorios</span></h1>
+                <p class="text-gray-500 dark:text-gray-400 transition-colors duration-300">Encuentra los mejores componentes y accesorios para potenciar tu equipo.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <div data-aos="fade-up" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between">
+                    <div>
+                        <img src="img/teclado_mouse.png" class="w-full h-56 object-cover rounded-2xl mb-6 shadow-md" alt="Teclados y Ratones">
+                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Teclados y Ratones</h1>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Equipos ergonómicos y mecánicos para mayor precisión y comodidad.</p>
+                    </div>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesan%20los%20teclados%20y%20ratones" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between">
+                    <div>
+                        <img src="img/auriculares_gaming.png" class="w-full h-56 object-cover rounded-2xl mb-6 shadow-md" alt="Auriculares y Audio">
+                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Auriculares y Audio</h1>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Sonido envolvente de alta calidad para gaming, trabajo y reuniones.</p>
+                    </div>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesan%20los%20auriculares" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="400" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between">
+                    <div>
+                        <img src="img/almacenamiento_ssd.png" class="w-full h-56 object-cover rounded-2xl mb-6 shadow-md" alt="Almacenamiento y Cables">
+                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Almacenamiento y Cables</h1>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Discos duros, SSDs, pendrives y cables de alta velocidad.</p>
+                    </div>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesan%20las%20opciones%20de%20almacenamiento" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contacto" class="py-16" style="background-color: #0f172a;">
+        <div class="max-w-screen-xl mx-auto px-8 text-center">
+            <div class="mb-10">
+                <h1 class="font-bold text-3xl text-pilgua mb-1">PC HOUSE</h1>
+                <p class="text-xl text-gray-500 mb-2 font-medium">Llay - Llay</p>
+                <p class="text-gray-400">Servicio técnico confiable y garantizado.</p>
+                <div class="mt-6 flex flex-col items-center justify-center space-y-2">
+                    <p class="text-gray-300 text-lg">Dirección: <span class="text-white font-medium">Avenida José Manuel Balmaceda 246, local 1 Llay Llay V Región</span></p>
+                    <p class="text-gray-300 text-lg">Contacto: <a href="https://wa.me/56984770299" target="_blank" class="text-pilgua font-bold hover:text-white transition">+56984770299</a></p>
+                </div>
+            </div>
+            <div class="flex justify-center space-x-8 mb-10 text-gray-300">
+                <a href="https://wa.me/56984770299" target="_blank" class="hover:text-pilgua transition">WhatsApp</a>
+                <a href="https://www.instagram.com/pc_house_llayllay" target="_blank" class="hover:text-pilgua transition">Instagram</a>
+                <span class="text-gray-500">|</span>
+                <span class="text-gray-400">Instalación de Software y Accesorios</span>
+            </div>
+            <p class="text-gray-500 text-sm border-t border-gray-800 pt-8">
+                &copy; 2026 PC HOUSE | Todos los derechos reservados
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>
