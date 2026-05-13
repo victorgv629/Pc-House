@@ -31,10 +31,10 @@
 
     <div class="w-full bg-gray-900 transition-colors duration-300 shadow-sm relative z-50 border-b border-gray-800">
         <div class="flex flex-col max-w-screen-xl px-8 mx-auto md:items-center md:justify-between md:flex-row">
-            <div class="flex flex-row items-center justify-between py-6">
-                <div class="relative flex items-center">
-                    <a href="index.html" class="flex flex-col items-center group">
-                        <img src="img/pc_house_logo.png" alt="PC House Logo" class="w-48 md:w-64 h-auto object-contain group-hover:scale-105 transition-transform duration-300">
+            <div class="flex flex-row items-center justify-between py-6 md:flex-shrink-0">
+                <div class="relative flex items-center flex-shrink-0">
+                    <a href="index.html" class="flex flex-col items-center group flex-shrink-0">
+                        <img src="img/pc_house_logo.png" alt="PC House Logo" class="w-48 md:w-64 min-w-[12rem] md:min-w-[16rem] h-auto object-contain group-hover:scale-105 transition-transform duration-300">
                         <span class="text-xs md:text-sm text-gray-300 font-bold tracking-[0.4em] uppercase -mt-2 md:-mt-4 opacity-90 group-hover:text-white transition-colors duration-300">LLAY <span class="text-pilgua mx-1">•</span> LLAY</span>
                     </a>
                 </div>
@@ -51,7 +51,15 @@
                 <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="portafolio.html">Trabajos</a>
                 <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="index.html#nosotros">Nosotros</a>
                 <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="#contacto">Contacto</a>
-                <a class="px-10 py-3 mt-2 text-sm text-center bg-pilgua text-white rounded-full md:mt-8 md:ml-4 shadow-lg transition transform hover:scale-105" href="https://wa.me/56984770299" target="_blank">WhatsApp</a>
+
+                <form action="accesorios.html" method="GET" class="relative mt-4 md:mt-8 md:ml-4 flex items-center">
+                    <input type="text" name="q" placeholder="Buscar accesorios..." class="w-full md:w-32 lg:w-48 px-4 py-2 text-sm text-gray-800 bg-white border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-pilgua focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:text-white transition-all duration-300 shadow-sm">
+                    <button type="submit" class="absolute right-3 text-gray-500 hover:text-pilgua dark:text-gray-400 dark:hover:text-pilgua transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </button>
+                </form>
+
+                <a class="px-10 py-3 mt-4 text-sm text-center bg-pilgua text-white rounded-full md:mt-8 md:ml-4 shadow-lg transition transform hover:scale-105" href="https://wa.me/56984770299" target="_blank">WhatsApp</a>
                 <button @click="darkMode = !darkMode" class="mt-2 md:mt-8 md:ml-4 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-300 focus:outline-none flex items-center justify-center">
                     <svg x-show="!darkMode" class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                     <svg x-show="darkMode" class="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
@@ -67,7 +75,7 @@
                 <p class="text-gray-500 dark:text-gray-400 transition-colors duration-300">Encuentra los mejores componentes y accesorios para potenciar tu equipo.</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-10">
+            <div id="accesorios-grid" class="grid md:grid-cols-3 gap-10">
 
                 
                 <div data-aos="fade-up" data-aos-delay="600" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between relative">
@@ -163,9 +171,9 @@
                 <img src="img/pc_house_logo.png" alt="PC House Logo" class="w-48 md:w-64 h-auto object-contain hover:scale-105 transition-transform duration-300">
                 <span class="text-xs md:text-sm text-gray-300 font-bold tracking-[0.4em] uppercase -mt-2 md:-mt-4 opacity-90 mb-6">LLAY <span class="text-pilgua mx-1">•</span> LLAY</span>
                 <p class="text-gray-400 text-lg">Servicio técnico confiable y garantizado.</p>
-                <div class="mt-6 flex flex-col items-center justify-center space-y-2">
-                    <p class="text-gray-300 text-lg">Dirección: <span class="text-white font-medium">Avenida José Manuel Balmaceda 246, local 1 Llay Llay V Región</span></p>
-                    <p class="text-gray-300 text-lg">Contacto: <a href="https://wa.me/56984770299" target="_blank" class="text-pilgua font-bold hover:text-white transition">+56984770299</a></p>
+                <div class="mt-8 flex flex-col items-center justify-center space-y-3">
+                    <p class="text-gray-300 text-lg md:text-xl font-light tracking-wide">Dirección: <span class="text-white font-medium tracking-normal">Avenida José Manuel Balmaceda 246, local 1 Llay Llay V Región</span></p>
+                    <p class="text-gray-300 text-lg md:text-xl font-light tracking-wide">Contacto: <a href="https://wa.me/56984770299" target="_blank" class="text-pilgua font-bold tracking-wider hover:text-white transition-colors duration-300">+56984770299</a></p>
                 </div>
             </div>
             <div class="flex justify-center space-x-8 mb-10 text-gray-300">
@@ -198,6 +206,56 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
+
+        // Lógica de búsqueda
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+            
+            if (query) {
+                const searchTerm = query.toLowerCase().trim();
+                if (!searchTerm) return;
+
+                const grid = document.getElementById('accesorios-grid');
+                if (grid) {
+                    const items = grid.querySelectorAll('div[data-aos]');
+                    let foundCount = 0;
+                    
+                    items.forEach(item => {
+                        // Buscar en el texto dentro del item
+                        const textContent = item.textContent.toLowerCase();
+                        if (textContent.includes(searchTerm)) {
+                            item.style.display = 'flex';
+                            foundCount++;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+
+                    // Actualizar título
+                    const headerContainer = document.querySelector('#accesorios .text-center.mb-16');
+                    if (headerContainer) {
+                        const h1 = headerContainer.querySelector('h1');
+                        const p = headerContainer.querySelector('p');
+                        
+                        if (h1) {
+                            h1.innerHTML = `Resultados para <span class="text-pilgua">"${query}"</span>`;
+                        }
+                        if (p) {
+                            p.textContent = foundCount > 0 
+                                ? `Hemos encontrado ${foundCount} accesorio(s) para tu búsqueda.` 
+                                : 'No se encontraron accesorios que coincidan con tu búsqueda.';
+                        }
+                    }
+                    
+                    // Asegurarnos de que el input de búsqueda muestre el valor buscado
+                    const searchInputs = document.querySelectorAll('input[name="q"]');
+                    searchInputs.forEach(input => {
+                        input.value = query;
+                    });
+                }
+            }
+        });
     </script>
 </body>
 </html>

@@ -12,7 +12,7 @@
                 extend: {
                     colors: {
                         cream: '#f8fafc',
-                        pilgua: '#2563eb',
+                        pilgua: '#22c55e',
                     }
                 }
             }
@@ -34,11 +34,11 @@
     <div class="w-full bg-cream dark:bg-gray-900 transition-colors duration-300 shadow-sm relative z-50">
         <div class="flex flex-col max-w-screen-xl px-8 mx-auto md:items-center md:justify-between md:flex-row">
             <div class="flex flex-row items-center justify-between py-6">
-                <div class="relative">
-                    <a href="index.html" class="text-2xl font-bold tracking-tight text-pilgua relative z-50 ml-6 block leading-none pt-1">PC HOUSE<span class="block text-base text-gray-500 dark:text-gray-400 mt-1 font-medium">Llay - Llay</span></a>
-                    <svg class="w-8 h-8 z-40 absolute -top-1 -left-2 text-pilgua" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
-                    </svg>
+                <div class="relative flex items-center flex-shrink-0">
+                    <a href="index.html" class="flex flex-col items-center group flex-shrink-0">
+                        <img src="img/pc_house_logo.png" alt="PC House Logo" class="w-48 md:w-64 min-w-[12rem] md:min-w-[16rem] h-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                        <span class="text-xs md:text-sm text-gray-300 font-bold tracking-[0.4em] uppercase -mt-2 md:-mt-4 opacity-90 group-hover:text-white transition-colors duration-300">LLAY <span class="text-pilgua mx-1">•</span> LLAY</span>
+                    </a>
                 </div>
                 <button class="rounded-lg md:hidden focus:outline-none" @click="open = !open">
                     <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
@@ -53,7 +53,15 @@
                 <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-pilgua dark:text-pilgua font-bold transition-colors duration-300" href="#">Trabajos</a>
                 <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 hover:text-pilgua dark:hover:text-pilgua dark:text-gray-300 transition-colors duration-300" href="index.html#nosotros">Nosotros</a>
                 <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 hover:text-pilgua dark:hover:text-pilgua dark:text-gray-300 transition-colors duration-300" href="#contacto">Contacto</a>
-                <a class="px-10 py-3 mt-2 text-sm text-center bg-pilgua text-white rounded-full md:mt-8 md:ml-4 shadow-lg transition transform hover:scale-105" href="https://wa.me/56984770299" target="_blank">WhatsApp</a>
+                
+                <form action="accesorios.html" method="GET" class="relative mt-4 md:mt-8 md:ml-4 flex items-center">
+                    <input type="text" name="q" placeholder="Buscar accesorios..." class="w-full md:w-32 lg:w-48 px-4 py-2 text-sm text-gray-800 bg-white border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-pilgua focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:text-white transition-all duration-300 shadow-sm">
+                    <button type="submit" class="absolute right-3 text-gray-500 hover:text-pilgua dark:text-gray-400 dark:hover:text-pilgua transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </button>
+                </form>
+
+                <a class="px-10 py-3 mt-4 text-sm text-center bg-pilgua text-white rounded-full md:mt-8 md:ml-4 shadow-lg transition transform hover:scale-105" href="https://wa.me/56984770299" target="_blank">WhatsApp</a>
                 <button @click="darkMode = !darkMode" class="mt-2 md:mt-8 md:ml-4 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-300 focus:outline-none flex items-center justify-center">
                     <svg x-show="!darkMode" class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                     <svg x-show="darkMode" class="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
@@ -72,7 +80,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Trabajo 1 -->
                 <div data-aos="fade-up" data-aos-delay="100" class="gallery-item relative overflow-hidden rounded-3xl shadow-2xl group border-4 border-white dark:border-gray-800 transition-colors duration-300">
-                    <img src="img/trabajo_mantenimiento.png" alt="Mantenimiento de PC" class="gallery-img w-full h-80 object-cover">
+                    <img src="img/trabajo_mantenimiento.jpg" alt="Mantenimiento de PC" class="gallery-img w-full h-80 object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80 transition-opacity duration-300"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <h3 class="text-2xl font-bold text-white mb-2">Mantenimiento Preventivo</h3>
@@ -82,7 +90,7 @@
 
                 <!-- Trabajo 2 -->
                 <div data-aos="fade-up" data-aos-delay="200" class="gallery-item relative overflow-hidden rounded-3xl shadow-2xl group border-4 border-white dark:border-gray-800 transition-colors duration-300">
-                    <img src="img/trabajo_instalacion.png" alt="Instalación de Sistema" class="gallery-img w-full h-80 object-cover">
+                    <img src="img/trabajo_instalacion.jpg" alt="Instalación de Sistema" class="gallery-img w-full h-80 object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80 transition-opacity duration-300"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <h3 class="text-2xl font-bold text-white mb-2">Instalación de Software</h3>
@@ -92,7 +100,7 @@
 
                 <!-- Trabajo 3 -->
                 <div data-aos="fade-up" data-aos-delay="300" class="gallery-item relative overflow-hidden rounded-3xl shadow-2xl group border-4 border-white dark:border-gray-800 transition-colors duration-300">
-                    <img src="img/trabajo_limpieza.png" alt="Reparación de Notebook" class="gallery-img w-full h-80 object-cover">
+                    <img src="img/trabajo_limpieza.jpg" alt="Reparación de Notebook" class="gallery-img w-full h-80 object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80 transition-opacity duration-300"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <h3 class="text-2xl font-bold text-white mb-2">Reparación de Notebooks</h3>
@@ -102,7 +110,7 @@
 
                 <!-- Trabajo 4 -->
                 <div data-aos="fade-up" data-aos-delay="400" class="gallery-item relative overflow-hidden rounded-3xl shadow-2xl group border-4 border-white dark:border-gray-800 transition-colors duration-300">
-                    <img src="img/trabajo_armado.png" alt="Armado de PC Gaming" class="gallery-img w-full h-80 object-cover">
+                    <img src="img/trabajo_armado.jpg" alt="Armado de PC Gaming" class="gallery-img w-full h-80 object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80 transition-opacity duration-300"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <h3 class="text-2xl font-bold text-white mb-2">Armado de Equipos</h3>
@@ -121,13 +129,13 @@
 
     <footer id="contacto" class="py-16" style="background-color: #0f172a;">
         <div class="max-w-screen-xl mx-auto px-8 text-center">
-            <div class="mb-10">
-                <h1 class="font-bold text-3xl text-pilgua mb-1">PC HOUSE</h1>
-                <p class="text-xl text-gray-500 mb-2 font-medium">Llay - Llay</p>
+            <div class="mb-10 flex flex-col items-center">
+                <img src="img/pc_house_logo.png" alt="PC House Logo" class="w-48 md:w-64 h-auto object-contain hover:scale-105 transition-transform duration-300">
+                <span class="text-xs md:text-sm text-gray-300 font-bold tracking-[0.4em] uppercase -mt-2 md:-mt-4 opacity-90 mb-6">LLAY <span class="text-pilgua mx-1">•</span> LLAY</span>
                 <p class="text-gray-400">Servicio técnico confiable y garantizado.</p>
-                <div class="mt-6 flex flex-col items-center justify-center space-y-2">
-                    <p class="text-gray-300 text-lg">Dirección: <span class="text-white font-medium">Avenida José Manuel Balmaceda 246, local 1 Llay Llay V Región</span></p>
-                    <p class="text-gray-300 text-lg">Contacto: <a href="https://wa.me/56984770299" target="_blank" class="text-pilgua font-bold hover:text-white transition">+56984770299</a></p>
+                <div class="mt-8 flex flex-col items-center justify-center space-y-3">
+                    <p class="text-gray-300 text-lg md:text-xl font-light tracking-wide">Dirección: <span class="text-white font-medium tracking-normal">Avenida José Manuel Balmaceda 246, local 1 Llay Llay V Región</span></p>
+                    <p class="text-gray-300 text-lg md:text-xl font-light tracking-wide">Contacto: <a href="https://wa.me/56984770299" target="_blank" class="text-pilgua font-bold tracking-wider hover:text-white transition-colors duration-300">+56984770299</a></p>
                 </div>
             </div>
             <div class="flex justify-center space-x-8 mb-10 text-gray-300">
