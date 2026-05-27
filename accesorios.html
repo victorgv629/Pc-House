@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,9 @@
                     colors: {
                         cream: '#f8fafc',
                         pilgua: '#22c55e',
+                        slate: {
+                            950: '#0f172a',
+                        }
                     }
                 }
             }
@@ -21,10 +24,12 @@
     <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
     <style>
         body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, h4, .font-title { font-family: 'Outfit', sans-serif; }
         html, body {
             overflow-x: hidden;
             max-width: 100vw;
@@ -38,7 +43,7 @@
             background: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background-color: rgba(156, 163, 175, 0.5);
+            background-color: rgba(156, 163, 175, 0.3);
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
@@ -46,15 +51,15 @@
         }
     </style>
 </head>
-<body class="antialiased text-gray-700 dark:bg-gray-900 dark:text-gray-300 transition-colors duration-300" x-data="{ open: false, isModalOpen: false, modalImage: '', darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="$watch('darkMode', val => { localStorage.setItem('darkMode', val); val ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark') }); if(darkMode) document.documentElement.classList.add('dark')" @keydown.escape="isModalOpen = false">
+<body class="antialiased text-slate-700 dark:bg-slate-950 dark:text-slate-300 transition-colors duration-300" x-data="{ open: false, isModalOpen: false, modalImage: '', darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="$watch('darkMode', val => { localStorage.setItem('darkMode', val); val ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark') }); if(darkMode) document.documentElement.classList.add('dark')" @keydown.escape="isModalOpen = false">
 
-    <div class="w-full bg-gray-900 transition-colors duration-300 shadow-sm relative z-50 border-b border-gray-800">
+    <div class="sticky top-0 z-50 w-full bg-slate-950/85 backdrop-blur-md border-b border-slate-900 transition-colors duration-300 shadow-sm">
         <div class="flex flex-col max-w-screen-xl px-8 mx-auto md:items-center md:justify-between md:flex-row">
-            <div class="flex flex-row items-center justify-between py-6 md:flex-shrink-0">
+            <div class="flex flex-row items-center justify-between py-5 md:flex-shrink-0">
                 <div class="relative flex items-center flex-shrink-0">
                     <a href="index.html" class="flex flex-col items-center group flex-shrink-0">
-                        <img src="img/pc_house_logo.png" alt="PC House Logo" class="w-48 md:w-64 min-w-[12rem] md:min-w-[16rem] h-auto object-contain group-hover:scale-105 transition-transform duration-300">
-                        <span class="text-xs md:text-sm text-gray-300 font-bold tracking-[0.4em] uppercase -mt-2 md:-mt-4 opacity-90 group-hover:text-white transition-colors duration-300">LLAY <span class="text-pilgua mx-1">•</span> LLAY</span>
+                        <img src="img/pc_house_logo.png" alt="PC House Logo" class="w-44 md:w-56 min-w-[11rem] md:min-w-[14rem] h-auto object-contain group-hover:scale-102 transition-transform duration-300">
+                        <span class="text-[10px] md:text-xs text-slate-400 font-bold tracking-[0.4em] uppercase -mt-2 md:-mt-3 opacity-90 group-hover:text-white transition-colors duration-300">LLAY <span class="text-pilgua mx-1">•</span> LLAY</span>
                     </a>
                 </div>
                 <button class="rounded-lg md:hidden focus:outline-none text-white" @click="open = !open">
@@ -63,148 +68,266 @@
                     </svg>
                 </button>
             </div>
-            <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
-                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="index.html#home">Inicio</a>
-                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="index.html#servicios">Servicios</a>
-                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-pilgua font-bold transition-colors duration-300" href="#">Accesorios</a>
-                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="portafolio.html">Trabajos</a>
-                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="index.html#nosotros">Nosotros</a>
-                <a class="px-4 py-2 mt-2 text-sm font-medium md:mt-8 md:ml-4 text-gray-300 hover:text-pilgua transition-colors duration-300" href="#contacto">Contacto</a>
+            <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row items-center">
+                <a class="px-4 py-2 mt-2 text-sm font-semibold md:mt-0 md:ml-4 text-slate-300 hover:text-pilgua transition-colors duration-300" href="index.html#home">Inicio</a>
 
-                <form action="accesorios.html" method="GET" class="relative mt-4 md:mt-8 md:ml-4 flex items-center">
-                    <input type="text" name="q" placeholder="Buscar accesorios..." class="w-full md:w-32 lg:w-48 px-4 py-2 text-sm text-gray-800 bg-white border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-pilgua focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:text-white transition-all duration-300 shadow-sm">
-                    <button type="submit" class="absolute right-3 text-gray-500 hover:text-pilgua dark:text-gray-400 dark:hover:text-pilgua transition-colors">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <a class="px-4 py-2 mt-2 text-sm font-semibold md:mt-0 md:ml-4 text-pilgua transition-colors duration-300" href="#">Accesorios</a>
+                <a class="px-4 py-2 mt-2 text-sm font-semibold md:mt-0 md:ml-4 text-slate-300 hover:text-pilgua transition-colors duration-300" href="portafolio.html">Trabajos</a>
+                <a class="px-4 py-2 mt-2 text-sm font-semibold md:mt-0 md:ml-4 text-slate-300 hover:text-pilgua transition-colors duration-300" href="index.html#nosotros">Nosotros</a>
+                <a class="px-4 py-2 mt-2 text-sm font-semibold md:mt-0 md:ml-4 text-slate-300 hover:text-pilgua transition-colors duration-300" href="#contacto">Contacto</a>
+
+                <form action="accesorios.html" method="GET" class="relative mt-4 md:mt-0 md:ml-4 flex items-center">
+                    <input type="text" name="q" placeholder="Buscar accesorios..." class="w-full md:w-32 lg:w-44 px-4 py-1.5 text-xs text-slate-800 bg-white/10 border border-slate-700/60 rounded-full focus:outline-none focus:ring-2 focus:ring-pilgua focus:border-transparent dark:text-white transition-all duration-300 placeholder-slate-400">
+                    <button type="submit" class="absolute right-3 text-slate-400 hover:text-pilgua transition-colors">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </button>
                 </form>
 
-                <a class="px-10 py-3 mt-4 text-sm text-center bg-pilgua text-white rounded-full md:mt-8 md:ml-4 shadow-lg transition transform hover:scale-105" href="https://wa.me/56984770299" target="_blank">WhatsApp</a>
-                <button @click="darkMode = !darkMode" class="mt-2 md:mt-8 md:ml-4 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-300 focus:outline-none flex items-center justify-center">
-                    <svg x-show="!darkMode" class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                    <svg x-show="darkMode" class="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <a class="px-6 py-2 mt-4 text-sm text-center bg-pilgua text-white font-semibold rounded-full md:mt-0 md:ml-6 shadow-md hover:shadow-pilgua/20 hover:scale-105 transform transition duration-300" href="https://wa.me/56984770299" target="_blank">WhatsApp</a>
+                <button @click="darkMode = !darkMode" class="mt-2 md:mt-0 md:ml-4 p-2 rounded-full hover:bg-slate-800 transition-colors duration-300 focus:outline-none flex items-center justify-center">
+                    <svg x-show="!darkMode" class="w-5 h-5 text-slate-300 hover:text-pilgua" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    <svg x-show="darkMode" class="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 </button>
             </nav>
         </div>
     </div>
 
-    <div class="bg-cream dark:bg-gray-900 pt-16 min-h-screen">
-        <div id="accesorios" class="container px-8 mx-auto max-w-screen-xl pb-20 transition-colors duration-300">
-            <div data-aos="flip-up" class="max-w-xl mx-auto text-center mb-16">
-                <h1 class="font-bold text-4xl text-gray-900 dark:text-white my-3 transition-colors duration-300">Venta de <span class="text-pilgua">Accesorios</span></h1>
-                <p class="text-gray-500 dark:text-gray-400 transition-colors duration-300">Encuentra los mejores componentes y accesorios para potenciar tu equipo.</p>
+    <div class="bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 pt-16 min-h-screen transition-colors duration-300">
+        <div id="accesorios" class="container px-8 mx-auto max-w-screen-xl pb-20">
+            <div data-aos="fade-down" class="max-w-xl mx-auto text-center mb-16">
+                <h1 class="font-extrabold text-4xl text-slate-900 dark:text-white my-3 transition-colors duration-300 tracking-tight">Venta de <span class="text-pilgua">Accesorios</span></h1>
+                <p class="text-slate-500 dark:text-slate-400 transition-colors duration-300">Encuentra los mejores componentes y accesorios para potenciar tu equipo.</p>
             </div>
 
             <div id="accesorios-grid" class="grid md:grid-cols-3 gap-10">
 
-                
-                <div data-aos="fade-up" data-aos-delay="600" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between relative">
-                    <!-- Etiqueta de Precio -->
-                    <div class="absolute -top-4 -right-4 bg-pilgua text-white font-bold px-4 py-2 rounded-full shadow-lg z-10 border-4 border-white dark:border-gray-800 text-lg">
-                        $8.500
+                <!-- SSD 128 GB -->
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-white dark:bg-slate-900 shadow-sm hover:shadow-2xl p-6 text-center rounded-3xl border border-slate-100 dark:border-slate-800/80 hover:border-pilgua/30 dark:hover:border-pilgua/30 transform transition hover:-translate-y-1.5 duration-300 flex flex-col justify-between relative group">
+                    <div class="absolute -top-4 -right-4 bg-gradient-to-r from-pilgua to-green-600 text-white font-extrabold px-5 py-2 rounded-full shadow-lg shadow-pilgua/20 z-10 border-4 border-white dark:border-slate-950 text-lg tracking-wide">
+                        $45.990
                     </div>
-                    <div>
-                        <img src="img/adaptador_wifi.jpg" class="w-full h-56 object-contain rounded-2xl mb-6 shadow-sm bg-white p-2 cursor-pointer hover:opacity-80 transition-opacity duration-300" alt="Adaptador Wi-Fi 6 AX300" @click="modalImage = 'img/adaptador_wifi.jpg'; isModalOpen = true">
-                        <p class="text-xs text-pilgua font-bold mb-1 uppercase tracking-wider">CÓDIGO: PCH-001</p>
-                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Adaptador Wi-Fi 6 AX300</h1>
-                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Alta velocidad 286Mbps, MU-MIMO, Driver Free. Compatible con Windows 8/10/11.</p>
+                    <div class="flex flex-col h-full">
+                        <div class="bg-slate-50 dark:bg-slate-950/50 p-4 rounded-2xl mb-6 shadow-inner relative overflow-hidden">
+                            <img src="img/SSD.png" class="w-full h-48 object-contain rounded-xl cursor-pointer hover:scale-105 transition-all duration-300" alt="SSD 128 GB" @click="modalImage = 'img/SSD.png'; isModalOpen = true">
+                        </div>
+                        <p class="text-xs text-pilgua font-bold mb-2 uppercase tracking-wider">CÓDIGO: PCH-007</p>
+                        <h3 class="font-extrabold text-xl mb-3 text-slate-800 dark:text-white transition-colors duration-300 tracking-tight">SSD 128 GB</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed flex-grow">Unidad de estado sólido de alta velocidad de 128 GB. Mejora drásticamente el tiempo de arranque y rendimiento de tu PC o Notebook.</p>
                     </div>
-                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Adaptador%20Wi-Fi%206%20por%20$8.500" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20SSD%20128%20GB%20por%20$45.990" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pilgua to-green-600 text-white px-6 py-3.5 rounded-full font-bold shadow-md hover:shadow-lg hover:shadow-pilgua/25 hover:scale-102 active:scale-98 transform transition-all duration-300 w-full">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.861-4.416 9.863-9.864.001-2.639-1.025-5.12-2.89-6.987C16.36 1.888 13.882.862 11.24.862 5.805.862 1.382 5.283 1.38 10.72c-.001 1.56.417 3.086 1.214 4.453l-.994 3.635 3.722-.976zM17.5 14.39c-.29-.145-1.72-.848-1.986-.944-.267-.097-.461-.145-.655.145-.194.29-.752.944-.922 1.138-.17.194-.34.218-.63.073-.29-.145-1.226-.452-2.336-1.442-.864-.771-1.447-1.723-1.617-2.014-.17-.29-.018-.447.127-.591.13-.13.29-.34.436-.51.145-.17.194-.291.291-.485.097-.194.049-.364-.025-.51-.073-.145-.655-1.577-.898-2.16-.236-.569-.475-.49-.655-.499-.17-.008-.364-.01-.558-.01-.194 0-.51.073-.777.364-.267.29-1.02 1.02-1.02 2.487 0 1.467 1.067 2.885 1.213 3.08.145.194 2.1 3.206 5.09 4.502.71.308 1.264.492 1.696.63.713.226 1.36.194 1.872.118.571-.085 1.72-.703 1.962-1.382.243-.679.243-1.261.17-1.382-.073-.12-.267-.194-.558-.34z"/></svg>
+                        <span>Comprar por WhatsApp</span>
+                    </a>
                 </div>
-                
-                <div data-aos="fade-up" data-aos-delay="800" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between relative">
-                    <!-- Etiqueta de Precio -->
-                    <div class="absolute -top-4 -right-4 bg-pilgua text-white font-bold px-4 py-2 rounded-full shadow-lg z-10 border-4 border-white dark:border-gray-800 text-lg">
-                        $12.990
+
+                <!-- SSD 240 GB -->
+                <div data-aos="fade-up" data-aos-delay="400" class="bg-white dark:bg-slate-900 shadow-sm hover:shadow-2xl p-6 text-center rounded-3xl border border-slate-100 dark:border-slate-800/80 hover:border-pilgua/30 dark:hover:border-pilgua/30 transform transition hover:-translate-y-1.5 duration-300 flex flex-col justify-between relative group">
+                    <div class="absolute -top-4 -right-4 bg-gradient-to-r from-pilgua to-green-600 text-white font-extrabold px-5 py-2 rounded-full shadow-lg shadow-pilgua/20 z-10 border-4 border-white dark:border-slate-950 text-lg tracking-wide">
+                        $65.990
                     </div>
-                    <div>
-                        <img src="img/hub_usb_c.jpg" class="w-full h-56 object-contain rounded-2xl mb-6 shadow-sm bg-white p-2 cursor-pointer hover:opacity-80 transition-opacity duration-300" alt="Hub USB-C Multipuerto 7 en 1" @click="modalImage = 'img/hub_usb_c.jpg'; isModalOpen = true">
-                        <p class="text-xs text-pilgua font-bold mb-1 uppercase tracking-wider">CÓDIGO: PCH-002</p>
-                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Hub USB-C Multipuerto</h1>
-                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Adaptador 7 en 1 con puertos USB 3.0, lector de tarjetas TF/SD, Audio 3.5mm y USB-C.</p>
+                    <div class="flex flex-col h-full">
+                        <div class="bg-slate-50 dark:bg-slate-950/50 p-4 rounded-2xl mb-6 shadow-inner relative overflow-hidden">
+                            <img src="img/ssd_240.png" class="w-full h-48 object-contain rounded-xl cursor-pointer hover:scale-105 transition-all duration-300" alt="SSD 240 GB" @click="modalImage = 'img/ssd_240.png'; isModalOpen = true">
+                        </div>
+                        <p class="text-xs text-pilgua font-bold mb-2 uppercase tracking-wider">CÓDIGO: PCH-009</p>
+                        <h3 class="font-extrabold text-xl mb-3 text-slate-800 dark:text-white transition-colors duration-300 tracking-tight">SSD 240 GB</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed flex-grow">Unidad de estado sólido de alta velocidad de 240 GB. Ideal para repotenciar el almacenamiento de tu PC o Notebook.</p>
                     </div>
-                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Hub%20USB-C%20por%20$12.990" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20SSD%20240%20GB%20por%20$65.990" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pilgua to-green-600 text-white px-6 py-3.5 rounded-full font-bold shadow-md hover:shadow-lg hover:shadow-pilgua/25 hover:scale-102 active:scale-98 transform transition-all duration-300 w-full">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.861-4.416 9.863-9.864.001-2.639-1.025-5.12-2.89-6.987C16.36 1.888 13.882.862 11.24.862 5.805.862 1.382 5.283 1.38 10.72c-.001 1.56.417 3.086 1.214 4.453l-.994 3.635 3.722-.976zM17.5 14.39c-.29-.145-1.72-.848-1.986-.944-.267-.097-.461-.145-.655.145-.194.29-.752.944-.922 1.138-.17.194-.34.218-.63.073-.29-.145-1.226-.452-2.336-1.442-.864-.771-1.447-1.723-1.617-2.014-.17-.29-.018-.447.127-.591.13-.13.29-.34.436-.51.145-.17.194-.291.291-.485.097-.194.049-.364-.025-.51-.073-.145-.655-1.577-.898-2.16-.236-.569-.475-.49-.655-.499-.17-.008-.364-.01-.558-.01-.194 0-.51.073-.777.364-.267.29-1.02 1.02-1.02 2.487 0 1.467 1.067 2.885 1.213 3.08.145.194 2.1 3.206 5.09 4.502.71.308 1.264.492 1.696.63.713.226 1.36.194 1.872.118.571-.085 1.72-.703 1.962-1.382.243-.679.243-1.261.17-1.382-.073-.12-.267-.194-.558-.34z"/></svg>
+                        <span>Comprar por WhatsApp</span>
+                    </a>
                 </div>
-                
-                <div data-aos="fade-up" data-aos-delay="1000" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between relative">
-                    <!-- Etiqueta de Precio -->
-                    <div class="absolute -top-4 -right-4 bg-pilgua text-white font-bold px-4 py-2 rounded-full shadow-lg z-10 border-4 border-white dark:border-gray-800 text-lg">
+
+                <!-- Case Disco Duro 2.5" -->
+                <div data-aos="fade-up" data-aos-delay="600" class="bg-white dark:bg-slate-900 shadow-sm hover:shadow-2xl p-6 text-center rounded-3xl border border-slate-100 dark:border-slate-800/80 hover:border-pilgua/30 dark:hover:border-pilgua/30 transform transition hover:-translate-y-1.5 duration-300 flex flex-col justify-between relative group">
+                    <div class="absolute -top-4 -right-4 bg-gradient-to-r from-pilgua to-green-600 text-white font-extrabold px-5 py-2 rounded-full shadow-lg shadow-pilgua/20 z-10 border-4 border-white dark:border-slate-950 text-lg tracking-wide">
                         $9.990
                     </div>
-                    <div>
-                        <img src="img/mouse_inalambrico.jpg" class="w-full h-56 object-contain rounded-2xl mb-6 shadow-sm bg-white p-2 cursor-pointer hover:opacity-80 transition-opacity duration-300" alt="Mouse Inalámbrico Recargable" @click="modalImage = 'img/mouse_inalambrico.jpg'; isModalOpen = true">
-                        <p class="text-xs text-pilgua font-bold mb-1 uppercase tracking-wider">CÓDIGO: PCH-003</p>
-                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Mouse Inalámbrico Dual</h1>
-                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Mouse recargable silencioso. Doble conexión: Bluetooth y USB (2.4G). Compatible con múltiples dispositivos.</p>
+                    <div class="flex flex-col h-full">
+                        <div class="bg-slate-50 dark:bg-slate-950/50 p-4 rounded-2xl mb-6 shadow-inner relative overflow-hidden">
+                            <img src="img/case_disco_duro.jpg" class="w-full h-48 object-contain rounded-xl cursor-pointer hover:scale-105 transition-all duration-300" alt="Case Disco Duro Transparente" @click="modalImage = 'img/case_disco_duro.jpg'; isModalOpen = true">
+                        </div>
+                        <p class="text-xs text-pilgua font-bold mb-2 uppercase tracking-wider">CÓDIGO: PCH-004</p>
+                        <h3 class="font-extrabold text-xl mb-3 text-slate-800 dark:text-white transition-colors duration-300 tracking-tight">Case Disco Duro 2.5"</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed flex-grow">Carcasa transparente para disco duro o SSD de 2.5 pulgadas. Conexión rápida USB 3.0.</p>
                     </div>
-                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Mouse%20Inalámbrico%20por%20$9.990" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Case%20para%20Disco%20Duro%20por%20$9.990" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pilgua to-green-600 text-white px-6 py-3.5 rounded-full font-bold shadow-md hover:shadow-lg hover:shadow-pilgua/25 hover:scale-102 active:scale-98 transform transition-all duration-300 w-full">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.861-4.416 9.863-9.864.001-2.639-1.025-5.12-2.89-6.987C16.36 1.888 13.882.862 11.24.862 5.805.862 1.382 5.283 1.38 10.72c-.001 1.56.417 3.086 1.214 4.453l-.994 3.635 3.722-.976zM17.5 14.39c-.29-.145-1.72-.848-1.986-.944-.267-.097-.461-.145-.655.145-.194.29-.752.944-.922 1.138-.17.194-.34.218-.63.073-.29-.145-1.226-.452-2.336-1.442-.864-.771-1.447-1.723-1.617-2.014-.17-.29-.018-.447.127-.591.13-.13.29-.34.436-.51.145-.17.194-.291.291-.485.097-.194.049-.364-.025-.51-.073-.145-.655-1.577-.898-2.16-.236-.569-.475-.49-.655-.499-.17-.008-.364-.01-.558-.01-.194 0-.51.073-.777.364-.267.29-1.02 1.02-1.02 2.487 0 1.467 1.067 2.885 1.213 3.08.145.194 2.1 3.206 5.09 4.502.71.308 1.264.492 1.696.63.713.226 1.36.194 1.872.118.571-.085 1.72-.703 1.962-1.382.243-.679.243-1.261.17-1.382-.073-.12-.267-.194-.558-.34z"/></svg>
+                        <span>Comprar por WhatsApp</span>
+                    </a>
                 </div>
-                
-                <div data-aos="fade-up" data-aos-delay="200" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between relative">
-                    <!-- Etiqueta de Precio -->
-                    <div class="absolute -top-4 -right-4 bg-pilgua text-white font-bold px-4 py-2 rounded-full shadow-lg z-10 border-4 border-white dark:border-gray-800 text-lg">
-                        $9.990
-                    </div>
-                    <div>
-                        <img src="img/case_disco_duro.jpg" class="w-full h-56 object-contain rounded-2xl mb-6 shadow-sm bg-white p-2 cursor-pointer hover:opacity-80 transition-opacity duration-300" alt="Case Disco Duro Transparente" @click="modalImage = 'img/case_disco_duro.jpg'; isModalOpen = true">
-                        <p class="text-xs text-pilgua font-bold mb-1 uppercase tracking-wider">CÓDIGO: PCH-004</p>
-                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Case Disco Duro 2.5"</h1>
-                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Carcasa transparente para disco duro o SSD de 2.5 pulgadas. Conexión rápida USB 3.0.</p>
-                    </div>
-                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Case%20para%20Disco%20Duro%20por%20$9.990" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
-                </div>
-                
-                <div data-aos="fade-up" data-aos-delay="400" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between relative">
-                    <!-- Etiqueta de Precio -->
-                    <div class="absolute -top-4 -right-4 bg-pilgua text-white font-bold px-4 py-2 rounded-full shadow-lg z-10 border-4 border-white dark:border-gray-800 text-lg">
+
+                <!-- Cable Adaptador SATA a USB -->
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-white dark:bg-slate-900 shadow-sm hover:shadow-2xl p-6 text-center rounded-3xl border border-slate-100 dark:border-slate-800/80 hover:border-pilgua/30 dark:hover:border-pilgua/30 transform transition hover:-translate-y-1.5 duration-300 flex flex-col justify-between relative group">
+                    <div class="absolute -top-4 -right-4 bg-gradient-to-r from-pilgua to-green-600 text-white font-extrabold px-5 py-2 rounded-full shadow-lg shadow-pilgua/20 z-10 border-4 border-white dark:border-slate-950 text-lg tracking-wide">
                         $6.990
                     </div>
-                    <div>
-                        <img src="img/cable_sata_usb.jpg" class="w-full h-56 object-contain rounded-2xl mb-6 shadow-sm bg-white p-2 cursor-pointer hover:opacity-80 transition-opacity duration-300" alt="Cable Adaptador SATA a USB 3.0" @click="modalImage = 'img/cable_sata_usb.jpg'; isModalOpen = true">
-                        <p class="text-xs text-pilgua font-bold mb-1 uppercase tracking-wider">CÓDIGO: PCH-005</p>
-                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Cable Adaptador SATA a USB</h1>
-                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Conecta discos duros o SSD de 2.5" fácilmente. Alta velocidad, luces LED y Plug & Play.</p>
+                    <div class="flex flex-col h-full">
+                        <div class="bg-slate-50 dark:bg-slate-950/50 p-4 rounded-2xl mb-6 shadow-inner relative overflow-hidden">
+                            <img src="img/cable_sata_usb.jpg" class="w-full h-48 object-contain rounded-xl cursor-pointer hover:scale-105 transition-all duration-300" alt="Cable Adaptador SATA a USB 3.0" @click="modalImage = 'img/cable_sata_usb.jpg'; isModalOpen = true">
+                        </div>
+                        <p class="text-xs text-pilgua font-bold mb-2 uppercase tracking-wider">CÓDIGO: PCH-005</p>
+                        <h3 class="font-extrabold text-xl mb-3 text-slate-800 dark:text-white transition-colors duration-300 tracking-tight">Cable Adaptador SATA a USB</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed flex-grow">Conecta discos duros o SSD de 2.5" fácilmente. Alta velocidad, luces LED y Plug & Play.</p>
                     </div>
-                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Cable%20SATA%20a%20USB%20por%20$6.990" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Cable%20SATA%20a%20USB%20por%20$6.990" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pilgua to-green-600 text-white px-6 py-3.5 rounded-full font-bold shadow-md hover:shadow-lg hover:shadow-pilgua/25 hover:scale-102 active:scale-98 transform transition-all duration-300 w-full">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.861-4.416 9.863-9.864.001-2.639-1.025-5.12-2.89-6.987C16.36 1.888 13.882.862 11.24.862 5.805.862 1.382 5.283 1.38 10.72c-.001 1.56.417 3.086 1.214 4.453l-.994 3.635 3.722-.976zM17.5 14.39c-.29-.145-1.72-.848-1.986-.944-.267-.097-.461-.145-.655.145-.194.29-.752.944-.922 1.138-.17.194-.34.218-.63.073-.29-.145-1.226-.452-2.336-1.442-.864-.771-1.447-1.723-1.617-2.014-.17-.29-.018-.447.127-.591.13-.13.29-.34.436-.51.145-.17.194-.291.291-.485.097-.194.049-.364-.025-.51-.073-.145-.655-1.577-.898-2.16-.236-.569-.475-.49-.655-.499-.17-.008-.364-.01-.558-.01-.194 0-.51.073-.777.364-.267.29-1.02 1.02-1.02 2.487 0 1.467 1.067 2.885 1.213 3.08.145.194 2.1 3.206 5.09 4.502.71.308 1.264.492 1.696.63.713.226 1.36.194 1.872.118.571-.085 1.72-.703 1.962-1.382.243-.679.243-1.261.17-1.382-.073-.12-.267-.194-.558-.34z"/></svg>
+                        <span>Comprar por WhatsApp</span>
+                    </a>
                 </div>
-                
-                <div data-aos="fade-up" data-aos-delay="600" class="bg-white dark:bg-gray-800 shadow-2xl p-6 text-center rounded-3xl border-b-8 border-pilgua transform transition hover:-translate-y-2 duration-300 flex flex-col justify-between relative">
-                    <!-- Etiqueta de Precio -->
-                    <div class="absolute -top-4 -right-4 bg-pilgua text-white font-bold px-4 py-2 rounded-full shadow-lg z-10 border-4 border-white dark:border-gray-800 text-lg">
+
+                <!-- Cargador Universal -->
+                <div data-aos="fade-up" data-aos-delay="400" class="bg-white dark:bg-slate-900 shadow-sm hover:shadow-2xl p-6 text-center rounded-3xl border border-slate-100 dark:border-slate-800/80 hover:border-pilgua/30 dark:hover:border-pilgua/30 transform transition hover:-translate-y-1.5 duration-300 flex flex-col justify-between relative group">
+                    <div class="absolute -top-4 -right-4 bg-gradient-to-r from-pilgua to-green-600 text-white font-extrabold px-5 py-2 rounded-full shadow-lg shadow-pilgua/20 z-10 border-4 border-white dark:border-slate-950 text-lg tracking-wide">
+                        $15.990
+                    </div>
+                    <div class="flex flex-col h-full">
+                        <div class="bg-slate-50 dark:bg-slate-950/50 p-4 rounded-2xl mb-6 shadow-inner relative overflow-hidden">
+                            <img src="img/CARGADOR.jpg" class="w-full h-48 object-contain rounded-xl cursor-pointer hover:scale-105 transition-all duration-300" alt="Cargador de notebook Universal" @click="modalImage = 'img/CARGADOR.jpg'; isModalOpen = true">
+                        </div>
+                        <p class="text-xs text-pilgua font-bold mb-2 uppercase tracking-wider">CÓDIGO: PCH-008</p>
+                        <h3 class="font-extrabold text-xl mb-3 text-slate-800 dark:text-white transition-colors duration-300 tracking-tight">Cargador Universal</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed flex-grow">Cargador universal compatible con múltiples marcas de notebook. Diseño duradero y protección integrada contra sobrecargas.</p>
+                    </div>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Cargador%20de%20notebook%20Universal%20por%20$15.990" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pilgua to-green-600 text-white px-6 py-3.5 rounded-full font-bold shadow-md hover:shadow-lg hover:shadow-pilgua/25 hover:scale-102 active:scale-98 transform transition-all duration-300 w-full">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.861-4.416 9.863-9.864.001-2.639-1.025-5.12-2.89-6.987C16.36 1.888 13.882.862 11.24.862 5.805.862 1.382 5.283 1.38 10.72c-.001 1.56.417 3.086 1.214 4.453l-.994 3.635 3.722-.976zM17.5 14.39c-.29-.145-1.72-.848-1.986-.944-.267-.097-.461-.145-.655.145-.194.29-.752.944-.922 1.138-.17.194-.34.218-.63.073-.29-.145-1.226-.452-2.336-1.442-.864-.771-1.447-1.723-1.617-2.014-.17-.29-.018-.447.127-.591.13-.13.29-.34.436-.51.145-.17.194-.291.291-.485.097-.194.049-.364-.025-.51-.073-.145-.655-1.577-.898-2.16-.236-.569-.475-.49-.655-.499-.17-.008-.364-.01-.558-.01-.194 0-.51.073-.777.364-.267.29-1.02 1.02-1.02 2.487 0 1.467 1.067 2.885 1.213 3.08.145.194 2.1 3.206 5.09 4.502.71.308 1.264.492 1.696.63.713.226 1.36.194 1.872.118.571-.085 1.72-.703 1.962-1.382.243-.679.243-1.261.17-1.382-.073-.12-.267-.194-.558-.34z"/></svg>
+                        <span>Comprar por WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Hub USB-C Multipuerto -->
+                <div data-aos="fade-up" data-aos-delay="600" class="bg-white dark:bg-slate-900 shadow-sm hover:shadow-2xl p-6 text-center rounded-3xl border border-slate-100 dark:border-slate-800/80 hover:border-pilgua/30 dark:hover:border-pilgua/30 transform transition hover:-translate-y-1.5 duration-300 flex flex-col justify-between relative group">
+                    <div class="absolute -top-4 -right-4 bg-gradient-to-r from-pilgua to-green-600 text-white font-extrabold px-5 py-2 rounded-full shadow-lg shadow-pilgua/20 z-10 border-4 border-white dark:border-slate-950 text-lg tracking-wide">
                         $12.990
                     </div>
-                    <div>
-                        <img src="img/mcafee_antivirus.jpg" class="w-full h-56 object-contain rounded-2xl mb-6 shadow-sm bg-white p-2 cursor-pointer hover:opacity-80 transition-opacity duration-300" alt="McAfee Antivirus Plus" @click="modalImage = 'img/mcafee_antivirus.jpg'; isModalOpen = true">
-                        <p class="text-xs text-pilgua font-bold mb-1 uppercase tracking-wider">CÓDIGO: PCH-006</p>
-                        <h1 class="font-bold text-xl mb-3 text-gray-800 dark:text-white transition-colors duration-300">Licencia McAfee Antivirus</h1>
-                        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 transition-colors duration-300">Suscripción por 1 año. Protección total para tu equipo contra virus y amenazas.</p>
+                    <div class="flex flex-col h-full">
+                        <div class="bg-slate-50 dark:bg-slate-950/50 p-4 rounded-2xl mb-6 shadow-inner relative overflow-hidden">
+                            <img src="img/hub_usb_c.jpg" class="w-full h-48 object-contain rounded-xl cursor-pointer hover:scale-105 transition-all duration-300" alt="Hub USB-C Multipuerto 7 en 1" @click="modalImage = 'img/hub_usb_c.jpg'; isModalOpen = true">
+                        </div>
+                        <p class="text-xs text-pilgua font-bold mb-2 uppercase tracking-wider">CÓDIGO: PCH-002</p>
+                        <h3 class="font-extrabold text-xl mb-3 text-slate-800 dark:text-white transition-colors duration-300 tracking-tight">Hub USB-C Multipuerto</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed flex-grow">Adaptador 7 en 1 con puertos USB 3.0, lector de tarjetas TF/SD, Audio 3.5mm y USB-C.</p>
                     </div>
-                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20la%20licencia%20de%20McAfee%20por%20$12.990" target="_blank" class="inline-block bg-pilgua text-white px-6 py-3 rounded-full font-bold shadow-md hover:scale-105 transform transition w-full">Comprar por WhatsApp</a>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Hub%20USB-C%20por%20$12.990" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pilgua to-green-600 text-white px-6 py-3.5 rounded-full font-bold shadow-md hover:shadow-lg hover:shadow-pilgua/25 hover:scale-102 active:scale-98 transform transition-all duration-300 w-full">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.861-4.416 9.863-9.864.001-2.639-1.025-5.12-2.89-6.987C16.36 1.888 13.882.862 11.24.862 5.805.862 1.382 5.283 1.38 10.72c-.001 1.56.417 3.086 1.214 4.453l-.994 3.635 3.722-.976zM17.5 14.39c-.29-.145-1.72-.848-1.986-.944-.267-.097-.461-.145-.655.145-.194.29-.752.944-.922 1.138-.17.194-.34.218-.63.073-.29-.145-1.226-.452-2.336-1.442-.864-.771-1.447-1.723-1.617-2.014-.17-.29-.018-.447.127-.591.13-.13.29-.34.436-.51.145-.17.194-.291.291-.485.097-.194.049-.364-.025-.51-.073-.145-.655-1.577-.898-2.16-.236-.569-.475-.49-.655-.499-.17-.008-.364-.01-.558-.01-.194 0-.51.073-.777.364-.267.29-1.02 1.02-1.02 2.487 0 1.467 1.067 2.885 1.213 3.08.145.194 2.1 3.206 5.09 4.502.71.308 1.264.492 1.696.63.713.226 1.36.194 1.872.118.571-.085 1.72-.703 1.962-1.382.243-.679.243-1.261.17-1.382-.073-.12-.267-.194-.558-.34z"/></svg>
+                        <span>Comprar por WhatsApp</span>
+                    </a>
                 </div>
+
+                <!-- Adaptador Wi-Fi 6 AX300 -->
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-white dark:bg-slate-900 shadow-sm hover:shadow-2xl p-6 text-center rounded-3xl border border-slate-100 dark:border-slate-800/80 hover:border-pilgua/30 dark:hover:border-pilgua/30 transform transition hover:-translate-y-1.5 duration-300 flex flex-col justify-between relative group">
+                    <div class="absolute -top-4 -right-4 bg-gradient-to-r from-pilgua to-green-600 text-white font-extrabold px-5 py-2 rounded-full shadow-lg shadow-pilgua/20 z-10 border-4 border-white dark:border-slate-950 text-lg tracking-wide">
+                        $8.500
+                    </div>
+                    <div class="flex flex-col h-full">
+                        <div class="bg-slate-50 dark:bg-slate-950/50 p-4 rounded-2xl mb-6 shadow-inner relative overflow-hidden">
+                            <img src="img/adaptador_wifi.jpg" class="w-full h-48 object-contain rounded-xl cursor-pointer hover:scale-105 transition-all duration-300" alt="Adaptador Wi-Fi 6 AX300" @click="modalImage = 'img/adaptador_wifi.jpg'; isModalOpen = true">
+                        </div>
+                        <p class="text-xs text-pilgua font-bold mb-2 uppercase tracking-wider">CÓDIGO: PCH-001</p>
+                        <h3 class="font-extrabold text-xl mb-3 text-slate-800 dark:text-white transition-colors duration-300 tracking-tight">Adaptador Wi-Fi 6 AX300</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed flex-grow">Alta velocidad 286Mbps, MU-MIMO, Driver Free. Compatible con Windows 8/10/11.</p>
+                    </div>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Adaptador%20Wi-Fi%206%20por%20$8.500" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pilgua to-green-600 text-white px-6 py-3.5 rounded-full font-bold shadow-md hover:shadow-lg hover:shadow-pilgua/25 hover:scale-102 active:scale-98 transform transition-all duration-300 w-full">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.861-4.416 9.863-9.864.001-2.639-1.025-5.12-2.89-6.987C16.36 1.888 13.882.862 11.24.862 5.805.862 1.382 5.283 1.38 10.72c-.001 1.56.417 3.086 1.214 4.453l-.994 3.635 3.722-.976zM17.5 14.39c-.29-.145-1.72-.848-1.986-.944-.267-.097-.461-.145-.655.145-.194.29-.752.944-.922 1.138-.17.194-.34.218-.63.073-.29-.145-1.226-.452-2.336-1.442-.864-.771-1.447-1.723-1.617-2.014-.17-.29-.018-.447.127-.591.13-.13.29-.34.436-.51.145-.17.194-.291.291-.485.097-.194.049-.364-.025-.51-.073-.145-.655-1.577-.898-2.16-.236-.569-.475-.49-.655-.499-.17-.008-.364-.01-.558-.01-.194 0-.51.073-.777.364-.267.29-1.02 1.02-1.02 2.487 0 1.467 1.067 2.885 1.213 3.08.145.194 2.1 3.206 5.09 4.502.71.308 1.264.492 1.696.63.713.226 1.36.194 1.872.118.571-.085 1.72-.703 1.962-1.382.243-.679.243-1.261.17-1.382-.073-.12-.267-.194-.558-.34z"/></svg>
+                        <span>Comprar por WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Mouse Inalámbrico Dual -->
+                <div data-aos="fade-up" data-aos-delay="400" class="bg-white dark:bg-slate-900 shadow-sm hover:shadow-2xl p-6 text-center rounded-3xl border border-slate-100 dark:border-slate-800/80 hover:border-pilgua/30 dark:hover:border-pilgua/30 transform transition hover:-translate-y-1.5 duration-300 flex flex-col justify-between relative group">
+                    <div class="absolute -top-4 -right-4 bg-gradient-to-r from-pilgua to-green-600 text-white font-extrabold px-5 py-2 rounded-full shadow-lg shadow-pilgua/20 z-10 border-4 border-white dark:border-slate-950 text-lg tracking-wide">
+                        $9.990
+                    </div>
+                    <div class="flex flex-col h-full">
+                        <div class="bg-slate-50 dark:bg-slate-950/50 p-4 rounded-2xl mb-6 shadow-inner relative overflow-hidden">
+                            <img src="img/mouse_inalambrico.jpg" class="w-full h-48 object-contain rounded-xl cursor-pointer hover:scale-105 transition-all duration-300" alt="Mouse Inalámbrico Recargable" @click="modalImage = 'img/mouse_inalambrico.jpg'; isModalOpen = true">
+                        </div>
+                        <p class="text-xs text-pilgua font-bold mb-2 uppercase tracking-wider">CÓDIGO: PCH-003</p>
+                        <h3 class="font-extrabold text-xl mb-3 text-slate-800 dark:text-white transition-colors duration-300 tracking-tight">Mouse Inalámbrico Dual</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed flex-grow">Mouse recargable silencioso. Doble conexión: Bluetooth y USB (2.4G). Compatible con múltiples dispositivos.</p>
+                    </div>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20el%20Mouse%20Inalámbrico%20por%20$9.990" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pilgua to-green-600 text-white px-6 py-3.5 rounded-full font-bold shadow-md hover:shadow-lg hover:shadow-pilgua/25 hover:scale-102 active:scale-98 transform transition-all duration-300 w-full">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.861-4.416 9.863-9.864.001-2.639-1.025-5.12-2.89-6.987C16.36 1.888 13.882.862 11.24.862 5.805.862 1.382 5.283 1.38 10.72c-.001 1.56.417 3.086 1.214 4.453l-.994 3.635 3.722-.976zM17.5 14.39c-.29-.145-1.72-.848-1.986-.944-.267-.097-.461-.145-.655.145-.194.29-.752.944-.922 1.138-.17.194-.34.218-.63.073-.29-.145-1.226-.452-2.336-1.442-.864-.771-1.447-1.723-1.617-2.014-.17-.29-.018-.447.127-.591.13-.13.29-.34.436-.51.145-.17.194-.291.291-.485.097-.194.049-.364-.025-.51-.073-.145-.655-1.577-.898-2.16-.236-.569-.475-.49-.655-.499-.17-.008-.364-.01-.558-.01-.194 0-.51.073-.777.364-.267.29-1.02 1.02-1.02 2.487 0 1.467 1.067 2.885 1.213 3.08.145.194 2.1 3.206 5.09 4.502.71.308 1.264.492 1.696.63.713.226 1.36.194 1.872.118.571-.085 1.72-.703 1.962-1.382.243-.679.243-1.261.17-1.382-.073-.12-.267-.194-.558-.34z"/></svg>
+                        <span>Comprar por WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Licencia McAfee Antivirus -->
+                <div data-aos="fade-up" data-aos-delay="600" class="bg-white dark:bg-slate-900 shadow-sm hover:shadow-2xl p-6 text-center rounded-3xl border border-slate-100 dark:border-slate-800/80 hover:border-pilgua/30 dark:hover:border-pilgua/30 transform transition hover:-translate-y-1.5 duration-300 flex flex-col justify-between relative group">
+                    <div class="absolute -top-4 -right-4 bg-gradient-to-r from-pilgua to-green-600 text-white font-extrabold px-5 py-2 rounded-full shadow-lg shadow-pilgua/20 z-10 border-4 border-white dark:border-slate-950 text-lg tracking-wide">
+                        $12.990
+                    </div>
+                    <div class="flex flex-col h-full">
+                        <div class="bg-slate-50 dark:bg-slate-950/50 p-4 rounded-2xl mb-6 shadow-inner relative overflow-hidden">
+                            <img src="img/mcafee_antivirus.jpg" class="w-full h-48 object-contain rounded-xl cursor-pointer hover:scale-105 transition-all duration-300" alt="McAfee Antivirus Plus" @click="modalImage = 'img/mcafee_antivirus.jpg'; isModalOpen = true">
+                        </div>
+                        <p class="text-xs text-pilgua font-bold mb-2 uppercase tracking-wider">CÓDIGO: PCH-006</p>
+                        <h3 class="font-extrabold text-xl mb-3 text-slate-800 dark:text-white transition-colors duration-300 tracking-tight">Licencia McAfee Antivirus</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed flex-grow">Suscripción por 1 año. Protección total para tu equipo contra virus y amenazas.</p>
+                    </div>
+                    <a href="https://wa.me/56984770299?text=Hola,%20me%20interesa%20la%20licencia%20de%20McAfee%20por%20$12.990" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-pilgua to-green-600 text-white px-6 py-3.5 rounded-full font-bold shadow-md hover:shadow-lg hover:shadow-pilgua/25 hover:scale-102 active:scale-98 transform transition-all duration-300 w-full">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.861-4.416 9.863-9.864.001-2.639-1.025-5.12-2.89-6.987C16.36 1.888 13.882.862 11.24.862 5.805.862 1.382 5.283 1.38 10.72c-.001 1.56.417 3.086 1.214 4.453l-.994 3.635 3.722-.976zM17.5 14.39c-.29-.145-1.72-.848-1.986-.944-.267-.097-.461-.145-.655.145-.194.29-.752.944-.922 1.138-.17.194-.34.218-.63.073-.29-.145-1.226-.452-2.336-1.442-.864-.771-1.447-1.723-1.617-2.014-.17-.29-.018-.447.127-.591.13-.13.29-.34.436-.51.145-.17.194-.291.291-.485.097-.194.049-.364-.025-.51-.073-.145-.655-1.577-.898-2.16-.236-.569-.475-.49-.655-.499-.17-.008-.364-.01-.558-.01-.194 0-.51.073-.777.364-.267.29-1.02 1.02-1.02 2.487 0 1.467 1.067 2.885 1.213 3.08.145.194 2.1 3.206 5.09 4.502.71.308 1.264.492 1.696.63.713.226 1.36.194 1.872.118.571-.085 1.72-.703 1.962-1.382.243-.679.243-1.261.17-1.382-.073-.12-.267-.194-.558-.34z"/></svg>
+                        <span>Comprar por WhatsApp</span>
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>
 
-    <footer id="contacto" class="py-16 pb-24 md:pb-16" style="background-color: #0f172a;">
+    <footer id="contacto" class="py-20" style="background-color: #020617;">
         <div class="max-w-screen-xl mx-auto px-4 md:px-8 text-center">
             <div class="mb-10 flex flex-col items-center">
-                <img src="img/pc_house_logo.png" alt="PC House Logo" class="w-48 md:w-64 h-auto object-contain hover:scale-105 transition-transform duration-300">
-                <span class="text-xs md:text-sm text-gray-300 font-bold tracking-[0.4em] uppercase -mt-2 md:-mt-4 opacity-90 mb-6">LLAY <span class="text-pilgua mx-1">•</span> LLAY</span>
-                <p class="text-gray-400 text-lg">Servicio técnico confiable y garantizado.</p>
+                <img src="img/pc_house_logo.png" alt="PC House Logo" class="w-48 md:w-56 h-auto object-contain hover:scale-105 transition-transform duration-300 mb-2">
+                <span class="text-xs text-slate-400 font-bold tracking-[0.4em] uppercase opacity-90 mb-6">LLAY <span class="text-pilgua mx-1">•</span> LLAY</span>
+                <p class="text-slate-400 text-lg">Servicio técnico confiable y garantizado.</p>
+                
                 <div class="mt-8 flex flex-col items-center justify-center space-y-3">
-                    <p class="text-gray-300 text-lg md:text-xl font-light tracking-wide">Dirección: <span class="text-white font-medium tracking-normal">Avenida José Manuel Balmaceda 246, local 1 Llay Llay V Región</span></p>
-                    <p class="text-gray-300 text-lg md:text-xl font-light tracking-wide">Contacto: <a href="https://wa.me/56984770299" target="_blank" class="text-pilgua font-bold tracking-wider hover:text-white transition-colors duration-300">+56984770299</a></p>
+                    <p class="text-slate-300 text-base md:text-lg font-light tracking-wide">Dirección: <span class="text-white font-medium tracking-normal">Avenida José Manuel Balmaceda 246, local 1 Llay Llay V Región</span></p>
+                    <p class="text-slate-300 text-base md:text-lg font-light tracking-wide">Contacto: <a href="https://wa.me/56984770299" target="_blank" class="text-pilgua font-bold tracking-wider hover:text-white transition-colors duration-300">+56984770299</a></p>
+                </div>
+                
+                <!-- Ubicación y Fachada -->
+                <div class="mt-12 max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-2 md:px-0" data-aos="zoom-in" data-aos-delay="200">
+                    <!-- Foto de la Fachada -->
+                    <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-800 h-64 md:h-80 relative group cursor-pointer" @click="modalImage = 'img/fachada_local.jpg'; isModalOpen = true">
+                        <img src="img/fachada_local.jpg" alt="Fachada del local PC House" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-100 transition duration-300">
+                    </div>
+                    <!-- Mapa de Ubicación -->
+                    <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-800 h-64 md:h-80">
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            scrolling="no" 
+                            marginheight="0" 
+                            marginwidth="0" 
+                            src="https://maps.google.com/maps?q=Avenida%20Jos%C3%A9%20Manuel%20Balmaceda%20246,%20Llay%20Llay,%20Valpara%C3%ADso,%20Chile&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                            class="filter opacity-90 hover:opacity-100 transition-opacity duration-300">
+                        </iframe>
+                    </div>
                 </div>
             </div>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-10 text-gray-300">
-                <div class="flex space-x-6">
-                    <a href="https://wa.me/56984770299" target="_blank" class="hover:text-pilgua transition">WhatsApp</a>
-                    <a href="https://www.instagram.com/pc_house_llayllay" target="_blank" class="hover:text-pilgua transition">Instagram</a>
-                    <a href="https://web.facebook.com/PC.HOUSE.LLAYLLAY/" target="_blank" class="hover:text-pilgua transition">Facebook</a>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-10 text-slate-350 border-t border-slate-900 pt-10">
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="https://wa.me/56984770299" target="_blank" class="inline-flex items-center space-x-2 hover:text-pilgua transition duration-300">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.861-4.416 9.863-9.864.001-2.639-1.025-5.12-2.89-6.987C16.36 1.888 13.882.862 11.24.862 5.805.862 1.382 5.283 1.38 10.72c-.001 1.56.417 3.086 1.214 4.453l-.994 3.635 3.722-.976zM17.5 14.39c-.29-.145-1.72-.848-1.986-.944-.267-.097-.461-.145-.655.145-.194.29-.752.944-.922 1.138-.17.194-.34.218-.63.073-.29-.145-1.226-.452-2.336-1.442-.864-.771-1.447-1.723-1.617-2.014-.17-.29-.018-.447.127-.591.13-.13.29-.34.436-.51.145-.17.194-.291.291-.485.097-.194.049-.364-.025-.51-.073-.145-.655-1.577-.898-2.16-.236-.569-.475-.49-.655-.499-.17-.008-.364-.01-.558-.01-.194 0-.51.073-.777.364-.267.29-1.02 1.02-1.02 2.487 0 1.467 1.067 2.885 1.213 3.08.145.194 2.1 3.206 5.09 4.502.71.308 1.264.492 1.696.63.713.226 1.36.194 1.872.118.571-.085 1.72-.703 1.962-1.382.243-.679.243-1.261.17-1.382-.073-.12-.267-.194-.558-.34z"/></svg>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="https://www.instagram.com/pc_house_llayllay" target="_blank" class="inline-flex items-center space-x-2 hover:text-pilgua transition duration-300">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.315 2c2.43 0 2.784.01 3.796.056 1.03.047 1.77.213 2.402.459.652.254 1.209.593 1.766 1.15.558.556.896 1.114 1.15 1.766.246.633.412 1.373.458 2.403.045 1.01.056 1.365.056 3.797 0 2.43-.011 2.784-.056 3.796-.046 1.03-.212 1.77-.458 2.403-.254.652-.593 1.209-1.15 1.766-.557.558-1.114.896-1.766 1.15-.633.246-1.373.412-2.403.458-1.01.045-1.365.056-3.797.056-2.43 0-2.784-.01-3.796-.056-1.03-.047-1.77-.213-2.402-.459-.652-.254-1.209-.593-1.766-1.15-.558-.556-.896-1.114-1.15-1.766-.246-.633-.412-1.373-.458-2.403C2.011 14.784 2 14.43 2 12c0-2.43.01-2.784.056-3.796.046-1.03.212-1.77.458-2.403.254-.652.593-1.209 1.15-1.766.557-.558 1.114-.896 1.766-1.15.633-.246 1.373-.412 2.403-.458 1.01-.045 1.365-.056 3.797-.056zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://web.facebook.com/PC.HOUSE.LLAYLLAY/" target="_blank" class="inline-flex items-center space-x-2 hover:text-pilgua transition duration-300">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                        <span>Facebook</span>
+                    </a>
                 </div>
-                <span class="hidden md:inline text-gray-500">|</span>
-                <span class="text-gray-400 text-center text-sm md:text-base">Instalación de Software y Accesorios</span>
+                <span class="hidden md:inline text-slate-800">|</span>
+                <span class="text-slate-400 text-center text-sm md:text-base">Instalación de Software y Accesorios</span>
             </div>
-            <div class="border-t border-gray-800 pt-8 flex flex-col items-center">
+            <div class="pt-2 flex flex-col items-center">
                 <p class="text-gray-500 text-sm mb-6">
                     &copy; 2026 PC HOUSE | Todos los derechos reservados
                 </p>
@@ -278,5 +401,12 @@
             }
         });
     </script>
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/56984770299" target="_blank" class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-2xl hover:scale-110 active:scale-95 transform transition-all duration-300 group" aria-label="Contacto por WhatsApp">
+        <div class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-75 group-hover:opacity-40 transition-opacity duration-300"></div>
+        <svg class="w-7 h-7 fill-current relative z-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.861-4.416 9.863-9.864.001-2.639-1.025-5.12-2.89-6.987C16.36 1.888 13.882.862 11.24.862 5.805.862 1.382 5.283 1.38 10.72c-.001 1.56.417 3.086 1.214 4.453l-.994 3.635 3.722-.976zM17.5 14.39c-.29-.145-1.72-.848-1.986-.944-.267-.097-.461-.145-.655.145-.194.29-.752.944-.922 1.138-.17.194-.34.218-.63.073-.29-.145-1.226-.452-2.336-1.442-.864-.771-1.447-1.723-1.617-2.014-.17-.29-.018-.447.127-.591.13-.13.29-.34.436-.51.145-.17.194-.291.291-.485.097-.194.049-.364-.025-.51-.073-.145-.655-1.577-.898-2.16-.236-.569-.475-.49-.655-.499-.17-.008-.364-.01-.558-.01-.194 0-.51.073-.777.364-.267.29-1.02 1.02-1.02 2.487 0 1.467 1.067 2.885 1.213 3.08.145.194 2.1 3.206 5.09 4.502.71.308 1.264.492 1.696.63.713.226 1.36.194 1.872.118.571-.085 1.72-.703 1.962-1.382.243-.679.243-1.261.17-1.382-.073-.12-.267-.194-.558-.34z"/>
+        </svg>
+    </a>
 </body>
 </html>
